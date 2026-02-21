@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  padding: 50px 20px;
+  transition: background 0.5s ease;
+}
+
+.container {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 60px 50px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* EMOJI SECTION */
+.emoji-section {
+  margin: 30px 0;
+}
+
+.emoji-section span {
+  font-size: 36px;
+  margin: 0 15px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.emoji-section span:hover {
+  transform: scale(1.2);
+}
+
+.emoji-section span.selected {
+  background: #4a90e2;
+  color: white;
+  transform: scale(1.3);
+}
+
+/* BUTTON */
+button {
+  padding: 15px 40px;
+  border-radius: 30px;
+  border: none;
+  background: #4a90e2;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* RESULT SECTION */
+#result {
+  margin-top: 50px;
+  padding: 40px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+/* MUSIC GRID */
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* MUSIC CARD */
+.music-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.music-card img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.music-card h4 {
+  margin-bottom: 5px;
+}
+
+.music-card p {
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.music-card audio {
+  width: 100%;
+}
+
+.music-card:hover {
+  transform: translateY(-5px);
+}

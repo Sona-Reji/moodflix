@@ -81,13 +81,13 @@ npm start
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](login.png)
+![Screenshot1](moodflix2.png)
 *Add caption explaining what this shows*
 
-![Screenshot2](login.png)
+![Screenshot2](moodflix1.png)
 *Add caption explaining what this shows*
 
-![Screenshot3](Add screenshot 3 here with proper name)
+![Screenshot3](moodflix3.png)
 *Add caption explaining what this shows*
 
 #### Diagrams

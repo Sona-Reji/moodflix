@@ -30,10 +30,7 @@ function analyzeEmotion() {
 
   changeBackground(currentEmotion);
 
-  // Show choice buttons
   document.getElementById("choiceSection").style.display = "block";
-
-  // Clear previous results
   document.getElementById("result").innerHTML = "";
 }
 
@@ -54,30 +51,52 @@ function changeBackground(emotion) {
 }
 
 /* ===============================
-   SHOW MUSIC (iTunes API)
+   SHOW MUSIC (Malayalam + English Mix)
 =================================*/
 async function showMusic() {
 
   const resultEl = document.getElementById("result");
   resultEl.innerHTML = "<h3>Loading music...</h3>";
 
-  // Add Malayalam keyword to emotion search
-  const searchQuery = `${currentEmotion} malayalam`;
-
   try {
 
-    const response = await fetch(
-      `https://itunes.apple.com/search?term=${encodeURIComponent(searchQuery)}&media=music&limit=6`
+    const emotionKeywordMap = {
+      happy: "happy feel good",
+      sad: "sad emotional",
+      angry: "angry intense",
+      calm: "calm relaxing",
+      motivated: "motivational energetic"
+    };
+
+    const baseKeyword = emotionKeywordMap[currentEmotion] || currentEmotion;
+
+    const malQuery = `${baseKeyword} malayalam song`;
+    const engQuery = `${baseKeyword} song`;
+
+    const malResponse = await fetch(
+      `https://itunes.apple.com/search?term=${encodeURIComponent(malQuery)}&media=music&limit=3`
     );
 
-    const data = await response.json();
+    const engResponse = await fetch(
+      `https://itunes.apple.com/search?term=${encodeURIComponent(engQuery)}&media=music&limit=3`
+    );
 
-    if (!data.results || data.results.length === 0) {
-      resultEl.innerHTML = "<h3>No Malayalam songs found.</h3>";
+    const malData = await malResponse.json();
+    const engData = await engResponse.json();
+
+    const songs = [
+      ...(malData.results || []),
+      ...(engData.results || [])
+    ]
+      .filter(song => song.previewUrl)
+      .slice(0, 6);
+
+    if (songs.length === 0) {
+      resultEl.innerHTML = "<h3>No songs found.</h3>";
       return;
     }
 
-    let songsHTML = data.results.map(song => `
+    let songsHTML = songs.map(song => `
       <div class="music-card">
         <img src="${song.artworkUrl100}">
         <h4>${song.trackName}</h4>
@@ -87,7 +106,7 @@ async function showMusic() {
     `).join("");
 
     resultEl.innerHTML = `
-      <h2>${currentEmotion.toUpperCase()} Malayalam Songs</h2>
+      <h2>${currentEmotion.toUpperCase()} Songs (Malayalam + English)</h2>
       <div class="music-grid">${songsHTML}</div>
     `;
 
@@ -98,7 +117,7 @@ async function showMusic() {
 }
 
 /* ===============================
-   SHOW MOVIES (TMDB API)
+   SHOW MOVIES (Malayalam Included)
 =================================*/
 async function showMovies() {
 
@@ -110,8 +129,8 @@ async function showMovies() {
     happy: [
       { title: "Charlie", year: 2015 },
       { title: "Bangalore Days", year: 2014 },
-      { title: "Ustad Hotel", year: 2012 },
       { title: "Premam", year: 2015 },
+      { title: "Ustad Hotel", year: 2012 },
       { title: "The Intern", year: 2015 },
       { title: "Paddington", year: 2014 }
     ],
@@ -121,7 +140,6 @@ async function showMovies() {
       { title: "Dangal", year: 2016 },
       { title: "Rocky", year: 1976 },
       { title: "Chak De India", year: 2007 },
-      { title: "The Social Network", year: 2010 },
       { title: "October Sky", year: 1999 }
     ],
 
@@ -129,29 +147,26 @@ async function showMovies() {
       { title: "Thanmathra", year: 2005 },
       { title: "Sufiyum Sujatayum", year: 2020 },
       { title: "The Fault in Our Stars", year: 2014 },
-      { title: "A Walk to Remember", year: 2002 },
-      { title: "The Shawshank Redemption", year: 1994 }
+      { title: "A Walk to Remember", year: 2002 }
     ],
 
     angry: [
       { title: "Lucifer", year: 2019 },
       { title: "Kammatipaadam", year: 2016 },
       { title: "John Wick", year: 2014 },
-      { title: "Gladiator", year: 2000 },
-      { title: "KGF", year: 2018 }
+      { title: "Gladiator", year: 2000 }
     ],
 
     calm: [
       { title: "Sudani from Nigeria", year: 2018 },
       { title: "Android Kunjappan Version 5.25", year: 2019 },
       { title: "Life of Pi", year: 2012 },
-      { title: "Into the Wild", year: 2007 },
-      { title: "Before Sunrise", year: 1995 }
+      { title: "Into the Wild", year: 2007 }
     ]
   };
 
   const selectedMovies = movieMap[currentEmotion] || movieMap["happy"];
-  const apiKey = "";
+  const apiKey = "8c5a3cd8b7c7fae2ed50b18b490dbf3b";
 
   try {
 

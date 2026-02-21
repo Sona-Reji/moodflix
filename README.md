@@ -81,7 +81,7 @@ npm start
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1] <https://github.com/Sona-Reji/moodflix/login.png>(Add screenshot 1 here with proper name)
+![Screenshot1](login.png)
 *Add caption explaining what this shows*
 
 ![Screenshot2](Add screenshot 2 here with proper name)

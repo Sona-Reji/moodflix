@@ -82,13 +82,13 @@ npm start
 #### Screenshots (Add at least 3)
 
 ![Screenshot1](moodflix2.png)
-*Add caption explaining what this shows*
+page that shows first when run
 
 ![Screenshot2](moodflix1.png)
-*Add caption explaining what this shows*
+recommendations of movie according to the  mood
 
-![Screenshot3](moodflix3.png)
-*Add caption explaining what this shows*
+![Screenshot3](moodflixx3.png)
+recommendations of songs according to the mood
 
 #### Diagrams
 

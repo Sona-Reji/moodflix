@@ -14,7 +14,7 @@ MOODFLIX
 - Member 2: ASHNITHA K - GOVERNMENT ENGINEERING COLLEGE IDUKKI
 
 ### Hosted Project Link
-
+https://sona-reji.github.io/moodflix/
 
 ### Project Description
 MOODFLIX is an AI-powered web application that detects a user’s mood through text input and instantly generates a personalized music playlist (including Malayalam songs). It enhances emotional well-being by recommending music that matches the user’s current emotional state.
